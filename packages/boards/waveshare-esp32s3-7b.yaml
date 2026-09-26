@@ -55,7 +55,7 @@ esp32:
 display:
   # ESPHome's exact 7-inch model supplies the RGB pins and panel timings. EXIO6 enables the separate panel supply.
   - id: !extend my_display
-    model: ESP32-S3-TOUCH-LCD-7-800X480
+    #model: ESP32-S3-TOUCH-LCD-7-800X480
     enable_pin:
       - waveshare_io_ch32v003: expander
         number: 6
