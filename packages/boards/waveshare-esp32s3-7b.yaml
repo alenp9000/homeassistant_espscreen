@@ -8,7 +8,7 @@
 # features it has; docs/PROFILES.md says how the files of a screen fit together.
 packages:
   # The chip, the Waveshare ch32v003 expander, the GT911 and the backlight line this board shares with the other Waveshare.
-  hardware: !include ../hardware/waveshare-ch422g.yaml
+  hardware: !include ../hardware/waveshare_io_ch32v003.yaml
   # The cards of this board's grid, one per cell (tools/generate_cells.py writes them; docs/RESPONSIVE.md).
   cells: !include ../cells/16.yaml
   look: !include ../looks/standard.yaml
