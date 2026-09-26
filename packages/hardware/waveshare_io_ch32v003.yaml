@@ -71,16 +71,68 @@ touchscreen:
 
 # The panel: an RGB one of ESPHome's mipi_rgb models, which bring its pins and its init. Its enable pin in ESPHome's
 # model is the backlight line above, which the firmware owns, so the board file names the model and not that pin.
+# display:
+#   - platform: mipi_rgb
+#     id: my_display
+#     dimensions:
+#       width: ${PANEL_W}
+#       height: ${PANEL_H}
+#     reset_pin:
+#       waveshare_io_ch32v003: expander
+#       number: 3
+#       mode:
+#         output: true
+#     update_interval: never
+#     auto_clear_enabled: false
 display:
-  - platform: mipi_rgb
+  - platform: rpi_dpi_rgb
     id: my_display
+    update_interval: never
+    auto_clear_enabled: false
+    color_order: RGB
+    pclk_frequency: 30MHZ
     dimensions:
-      width: ${PANEL_W}
-      height: ${PANEL_H}
+      width: 1024
+      height: 600
+    de_pin:
+      number: 5
+    hsync_pin:
+      number: 46
+      ignore_strapping_warning: true
+    vsync_pin:
+      number: 3
+      ignore_strapping_warning: true
+    pclk_pin: 7
+    pclk_inverted: true
     reset_pin:
       waveshare_io_ch32v003: expander
       number: 3
-      mode:
-        output: true
-    update_interval: never
-    auto_clear_enabled: false
+    # enable_pin:
+    #   waveshare_io_ch32v003: expander
+    #   number: 6
+    hsync_back_porch: 152
+    hsync_front_porch: 48
+    hsync_pulse_width: 162
+    vsync_back_porch: 13
+    vsync_front_porch: 3
+    vsync_pulse_width: 45
+    data_pins:
+      red:
+        - 1         #r3
+        - 2         #r4
+        - 42        #r5
+        - 41        #r6
+        - 40        #r7
+      blue:
+        - 14        #b3
+        - 38        #b4
+        - 18        #b5
+        - 17        #b6
+        - 10        #b7
+      green:
+        - 39        #g2
+        - 0         #g3
+        - 45        #g4
+        - 48        #g5
+        - 47        #g6
+        - 21        #g7
